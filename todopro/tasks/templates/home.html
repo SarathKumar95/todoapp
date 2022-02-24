@@ -6,6 +6,10 @@
 </head>
 <body>
 <center><h2>To Do App</h2></center>
-
+{% for task in tasks %}
+<div>
+    <p>{{task}}</p>
+</div>
+{% endfor %}
 </body>
 </html>
