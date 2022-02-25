@@ -17,6 +17,7 @@
 </form>
 {% for task in tasks %}
 <div>
+    <a href="{% url 'delete' task.id%}">Delete</a>
     <p>{{task}}</p>
 </div>
 {% endfor %}
