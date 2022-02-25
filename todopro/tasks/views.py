@@ -28,4 +28,18 @@ def delete_task(request, pk):
         item.delete()
         return redirect('/')
     context = {"item": item}
-    return render(request, 'delete.html',context )
+    return render(request, 'delete.html', context)
+
+
+def update_task(request, pk):
+    item = Tasks.objects.get(id=pk)
+    form = TaskForm(instance=item)
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+
+    return render(request, 'update.html', context)
