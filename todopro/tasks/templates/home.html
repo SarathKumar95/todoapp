@@ -1,30 +1,39 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
     <meta charset="UTF-8">
     <title>ToDoapp</title>
 </head>
 <body>
-<center><h2>To Do App</h2></center>
+<center><h2> To Do Assistant</h2></center>
+<div class="center-column">
+    <form action="" method="POST">
+        {%csrf_token%}
+        {{form.title}}
+        <input class="btn btn-secondary mt-3" id="submit_btn" type="submit" value="Create Task">
+    </form>
+    <div class="todo-list">
+        {% for task in tasks %}
+        <div class="item-row">
+            <a class="btn btn-success mt-3" id="update_btn" href="{% url 'update' task.id %}">Update</a>
+            <a class="btn btn-danger ms-2 mt-3" href="{% url 'delete' task.id %}">Delete</a>
+            {% if task.complete == True %}
+            <strike id="done">{{task}}</strike>
+            {% else %}
+            <span id="task">{{task}}</span>
+            {% endif %}
+        </div>
+        {% endfor %}
 
-<form action="" method="POST">
-    {%csrf_token%}
-    {{form.title}}
-    <input class="" type="submit" value="Create Task">
-</form>
-{% for task in tasks %}
-<div>
-    <a href="{% url 'update' task.id %}">Update</a>
-    <a href="{% url 'delete' task.id %}">Delete</a>
-    {% if task.complete == True %}
-    <strike>{{task}}</strike>
-    {% else %}
-    <span>{{task}}</span>
-    {% endif %}
+    </div>
 </div>
-{% endfor %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>
