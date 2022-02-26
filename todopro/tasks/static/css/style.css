@@ -28,12 +28,12 @@
 		box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
 	}
 
-	.btn-danger{
-		background-color: #ffae19;
-		border-color: #e59400;
-	}
+        #task,#done{
+        align:auto;
+        color:black;
+        }
 
-    #task,#done{
-    align:auto;
-    color:black;
+    #confirm_btn,#cancel_btn{
+    width:80px;
+    padding:3px;
     }

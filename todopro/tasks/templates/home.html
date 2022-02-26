@@ -14,7 +14,7 @@
     <form action="" method="POST">
         {%csrf_token%}
         {{form.title}}
-        <input class="btn btn-secondary mt-3" id="submit_btn" type="submit" value="Create Task">
+        <input class="btn btn-primary mt-3" id="submit_btn" type="submit" value="Create Task">
     </form>
     <div class="todo-list">
         {% for task in tasks %}
