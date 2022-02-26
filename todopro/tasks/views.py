@@ -18,7 +18,7 @@ def index(request):
 
     context = {"tasks": tasks, "form": form}
 
-    return render(request, 'home.html', context)
+    return render(request, 'index.html', context)
 
 
 def delete_task(request, pk):
